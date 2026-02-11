@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Projects - read only for public, write for authenticated admins
+    match /projects/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Designers - read only for public, write for authenticated admins
+    match /designers/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Reviews - read approved only for public, write for authenticated admins
+    match /reviews/{document=**} {
+      allow read: if resource.data.approved == true || request.auth != null;
+      allow write: if request.auth != null;
+    }
+    
+    // Admin users - read/write for authenticated admins only
+    match /adminUsers/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

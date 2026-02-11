@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Meantime Studio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <h1>Admin Login</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <p id="loginError" class="error-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard" style="display: none;">
+        <!-- Navigation -->
+        <nav class="admin-nav">
+            <div class="admin-nav-brand">
+                <a href="index.html">Meantime Studio</a> | Admin
+            </div>
+            <button id="logoutBtn" class="btn-logout">Logout</button>
+        </nav>
+
+        <div class="admin-container">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <ul class="admin-menu">
+                    <li><a href="#projects" class="admin-menu-item active" data-section="projects">Projects</a></li>
+                    <li><a href="#designers" class="admin-menu-item" data-section="designers">Designers</a></li>
+                    <li><a href="#reviews" class="admin-menu-item" data-section="reviews">Reviews</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="admin-main">
+                <!-- Projects Section -->
+                <section id="projectsSection" class="admin-section active">
+                    <div class="section-header">
+                        <h2>Manage Projects</h2>
+                        <button class="btn-primary" id="addProjectBtn">Add New Project</button>
+                    </div>
+                    
+                    <div class="projects-list" id="projectsList">
+                        <div class="loading">Loading projects...</div>
+                    </div>
+                </section>
+
+                <!-- Designers Section -->
+                <section id="designersSection" class="admin-section">
+                    <div class="section-header">
+                        <h2>Manage Designers</h2>
+                        <button class="btn-primary" id="addDesignerBtn">Add New Designer</button>
+                    </div>
+                    
+                    <div class="designers-list" id="designersList">
+                        <div class="loading">Loading designers...</div>
+                    </div>
+                </section>
+
+                <!-- Reviews Section -->
+                <section id="reviewsSection" class="admin-section">
+                    <div class="section-header">
+                        <h2>Manage Reviews</h2>
+                        <button class="btn-primary" id="addReviewBtn">Add New Review</button>
+                    </div>
+                    
+                    <div class="reviews-list" id="reviewsList">
+                        <div class="loading">Loading reviews...</div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Project Modal -->
+    <div id="projectModal" class="admin-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="projectModalTitle">Add New Project</h2>
+            <form id="projectForm">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="projectTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="projectDescription" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="projectCategory" required>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="luxury">Luxury</option>
+                        <option value="modern">Modern</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Featured</label>
+                    <input type="checkbox" id="projectFeatured">
+                </div>
+                <div class="form-group">
+                    <label>Images</label>
+                    <input type="file" id="projectImages" multiple accept="image/*">
+                    <div id="projectImagesPreview" class="images-preview"></div>
+                </div>
+                <button type="submit" class="btn-primary">Save Project</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Designer Modal -->
+    <div id="designerModal" class="admin-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="designerModalTitle">Add New Designer</h2>
+            <form id="designerForm">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="designerName" required>
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" id="designerRole" required>
+                </div>
+                <div class="form-group">
+                    <label>Bio</label>
+                    <textarea id="designerBio" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Experience (years)</label>
+                    <input type="number" id="designerExperience" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Specialties (comma separated)</label>
+                    <input type="text" id="designerSpecialties" placeholder="e.g., Modern, Luxury, Residential">
+                </div>
+                <div class="form-group">
+                    <label>Profile Image</label>
+                    <input type="file" id="designerImage" accept="image/*">
+                    <div id="designerImagePreview" class="image-preview"></div>
+                </div>
+                <button type="submit" class="btn-primary">Save Designer</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" class="admin-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="reviewModalTitle">Add New Review</h2>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label>Client Name</label>
+                    <input type="text" id="reviewClientName" required>
+                </div>
+                <div class="form-group">
+                    <label>Project</label>
+                    <input type="text" id="reviewProject">
+                </div>
+                <div class="form-group">
+                    <label>Rating (1-5)</label>
+                    <input type="number" id="reviewRating" min="1" max="5" value="5" required>
+                </div>
+                <div class="form-group">
+                    <label>Comment</label>
+                    <textarea id="reviewComment" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Approved</label>
+                    <input type="checkbox" id="reviewApproved" checked>
+                </div>
+                <button type="submit" class="btn-primary">Save Review</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
