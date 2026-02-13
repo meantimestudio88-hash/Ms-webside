@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work — Meantime Studio</title>
+    <meta name="description" content="A curated selection of private residences in Singapore.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>Work</h1>
+            <p class="page-intro">A curated selection of private residences in Singapore.</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Selected Residences</h2>
+                <div class="project-grid" id="featuredProjects">
+                    <!-- Featured projects loaded via JS -->
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Index</h2>
+                <div class="project-index-list" id="allProjects">
+                    <!-- All projects loaded via JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script type="module">
+        import { renderHeader, renderFooter } from './js/components.js';
+        import { initNavigation, initWorkPage } from './js/main.js';
+        
+        document.getElementById('header-placeholder').innerHTML = await renderHeader();
+        document.getElementById('footer-placeholder').innerHTML = await renderFooter();
+        initNavigation();
+        await initWorkPage();
+    </script>
+</body>
+</html>

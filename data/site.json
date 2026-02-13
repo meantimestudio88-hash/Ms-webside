@@ -1,0 +1,27 @@
+{
+  "brandName": "Meantime Studio",
+  "legalName": "Meantime Studio Pte. Ltd.",
+  "coreLine": "Designed for Living. Delivered with Control.",
+  "locationLine": "Interior Design Studio — Singapore",
+  "domain": "meantime-studio.com",
+  "contact": {
+    "email": "hello@meantime-studio.com",
+    "whatsapp": "+65 8399 1141",
+    "instagram": "@meantimestudio"
+  },
+  "nav": {
+    "primary": [
+      { "label": "Work", "href": "work.html" },
+      { "label": "Studio", "href": "studio.html" },
+      { "label": "Method", "href": "method.html" },
+      { "label": "Contact", "href": "contact.html" }
+    ]
+  },
+  "home": {
+    "heroH1": "Meantime Studio",
+    "heroSubline": "Interior Design Studio — Singapore",
+    "heroCoreLine": "Designed for Living. Delivered with Control.",
+    "heroSupportingLine": "Residential interiors shaped around real routines, delivered with disciplined oversight.",
+    "featuredProjectSlugs": ["residence-01", "residence-02", "residence-03"]
+  }
+}

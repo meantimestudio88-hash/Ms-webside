@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiries — Meantime Studio</title>
+    <meta name="description" content="Get in touch with Meantime Studio to discuss your residential project.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>Enquiries</h1>
+            <p class="page-intro">We undertake a limited number of residential projects annually to ensure focus and structured oversight.</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Project Enquiry</h2>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyType" class="form-label">Property Type</label>
+                        <select id="propertyType" name="propertyType" class="form-input" required>
+                            <option value="">Select...</option>
+                            <option value="condo">Condo</option>
+                            <option value="landed">Landed</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="householdSize" class="form-label">Household Size (optional)</label>
+                        <input type="text" id="householdSize" name="householdSize" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="budgetRange" class="form-label">Budget Range</label>
+                        <input type="text" id="budgetRange" name="budgetRange" class="form-input" placeholder="e.g., $200k - $300k">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Enquiry</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Direct</h2>
+                <div class="section-content" id="contactDetails">
+                    <!-- Loaded from site.json -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script type="module">
+        import { renderHeader, renderFooter } from './js/components.js';
+        import { initNavigation, loadSiteConfig } from './js/main.js';
+        
+        document.getElementById('header-placeholder').innerHTML = await renderHeader();
+        document.getElementById('footer-placeholder').innerHTML = await renderFooter();
+        initNavigation();
+        
+        // Load contact details
+        const siteConfig = await loadSiteConfig();
+        if (siteConfig) {
+            const contact = siteConfig.contact;
+            document.getElementById('contactDetails').innerHTML = `
+                <p><a href="mailto:${contact.email}">${contact.email}</a></p>
+                <p><a href="https://wa.me/${contact.whatsapp.replace(/[^0-9]/g, '')}" target="_blank" rel="noopener">${contact.whatsapp}</a></p>
+                <p><a href="https://instagram.com/${contact.instagram.replace('@', '')}" target="_blank" rel="noopener">${contact.instagram}</a></p>
+                <p>Singapore</p>
+            `;
+        }
+        
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your enquiry. We will be in touch soon.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>

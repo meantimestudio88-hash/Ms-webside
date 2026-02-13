@@ -3,191 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meantime Studio Pte Ltd | Interior Design Studio Singapore</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Meantime Studio — Interior Design Studio in Singapore</title>
+    <meta name="description" content="Residential interiors shaped around real routines, delivered with disciplined oversight.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="index.html">Meantime Studio</a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="portfolio.html">Work</a></li>
-                <li><a href="designers.html">Studio</a></li>
-                <li><a href="reviews.html">Voices</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="admin.html" class="admin-link">Admin</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <div id="header-placeholder"></div>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-tagline">Interior design studio — Singapore</p>
-            <h1 class="hero-title">Meantime Studio</h1>
-            <p class="hero-subtitle">Exploring light, material and proportion to shape quiet, contemporary spaces.</p>
-            <a href="portfolio.html" class="btn-primary">View selected work</a>
-        </div>
-        <div class="hero-image">
-            <div class="hero-overlay"></div>
+            <h1 id="heroH1">Meantime Studio</h1>
+            <p class="hero-subline" id="heroSubline">Interior Design Studio — Singapore</p>
+            <p class="hero-coreline" id="heroCoreLine">Designed for Living. Delivered with Control.</p>
+            <p class="hero-supporting" id="heroSupporting">Residential interiors shaped around real routines, delivered with disciplined oversight.</p>
         </div>
     </section>
 
-    <!-- Studio Section -->
-    <section class="about-section">
+    <!-- Selected Residences -->
+    <section class="section">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">A studio for measured spaces</h2>
-                    <p class="section-description">
-                        Meantime is an interior design studio working across residential and small-scale commercial projects.
-                        Each commission is treated as a study in light, proportion and tactility rather than a one-size-fits-all solution.
-                    </p>
-                    <p class="section-description">
-                        We favour quiet gestures, considered details and long-term relationships with clients, collaborators and makers.
-                        The work is driven by research and dialogue — every plan, material and junction is carefully tested before it is built.
-                    </p>
-                </div>
-                <div class="studio-meta">
-                    <div class="studio-meta-item">
-                        <h3>Studio</h3>
-                        <p>Meantime Studio Pte Ltd<br>Independent interior design practice based in Outram, Singapore.</p>
-                    </div>
-                    <div class="studio-meta-item">
-                        <h3>Focus</h3>
-                        <p>Homes, mixed-use spaces and intimate hospitality projects with a restrained, contemporary tone.</p>
-                    </div>
-                    <div class="studio-meta-item">
-                        <h3>Process</h3>
-                        <p>Research, drawing, mock-ups and on-site prototyping to ensure each project feels specific rather than generic.</p>
-                    </div>
-                </div>
+            <h2 class="section-heading">Selected Residences</h2>
+            <div class="project-grid" id="featuredProjects">
+                <!-- Projects loaded via JS -->
             </div>
         </div>
     </section>
 
-    <!-- Featured Projects -->
-    <section class="featured-projects">
+    <!-- Our Focus -->
+    <section class="section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <a href="portfolio.html" class="view-all">View All →</a>
-            </div>
-            <div class="projects-grid" id="featuredProjects">
-                <!-- Projects will be loaded from Firebase -->
-                <div class="loading">Loading projects...</div>
+            <h2 class="section-heading">Our Focus</h2>
+            <div class="section-content">
+                <p>Homes are built around daily life. Design decisions must align with how people actually live—routines, storage needs, privacy, circulation. Not how spaces are staged.</p>
+                <p>Every decision is measured against real use. Design intent is reinforced through disciplined coordination and oversight, ensuring clarity and accountability from concept to completion.</p>
             </div>
         </div>
     </section>
 
-    <!-- Approach Section -->
-    <section class="services-section">
+    <!-- Engagement -->
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">Approach</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">01</div>
-                    <h3>Research & Dialogue</h3>
-                    <p>We begin with close observation of how you live and work, mapping routines, adjacencies and existing light.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">02</div>
-                    <h3>Spatial Framework</h3>
-                    <p>Plans, sections and physical mock-ups test proportion, circulation and views before finishes are introduced.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">03</div>
-                    <h3>Material & Detail</h3>
-                    <p>A restrained palette of materials and joinery details is developed to give each project a calm, coherent character.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">04</div>
-                    <h3>On-site Stewardship</h3>
-                    <p>We stay closely involved on site, working with contractors and makers to protect the intent of the design.</p>
-                </div>
+            <h2 class="section-heading">Enquiries</h2>
+            <div class="section-content">
+                <p>We undertake a limited number of residential projects annually to maintain focus and oversight.</p>
+                <p><a href="contact.html" class="btn">Start a Conversation</a></p>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Space?</h2>
-                <p>Let's discuss your vision and create something extraordinary together.</p>
-                <a href="#contact" class="btn-primary">Get In Touch</a>
-            </div>
-        </div>
-    </section>
+    <div id="footer-placeholder"></div>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">Contact Meantime Studio</h2>
-                    <p class="section-description">
-                        Meantime Studio Pte Ltd is based in Singapore, offering interior design services with a focus
-                        on refined, contemporary spaces.
-                    </p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <div class="stat-label">Address</div>
-                        <p>Meantime Studio Pte Ltd<br>317 Outram Road #01-57<br>Singapore 169075</p>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Contact</div>
-                        <p>Phone: +65 8399 1141<br>Website: www.meantime-studio.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Meantime Studio</h3>
-                    <p>Interior design studio based in Singapore</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="portfolio.html">Work</a></li>
-                        <li><a href="designers.html">Studio</a></li>
-                        <li><a href="reviews.html">Voices</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Meantime Studio Pte Ltd</p>
-                    <p>317 Outram Road #01-57<br>Singapore 169075</p>
-                    <p>Phone: +65 8399 1141</p>
-                    <p>Website: www.meantime-studio.com</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Meantime Studio Pte Ltd. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script type="module" src="js/firebase-config.js"></script>
-    <script type="module" src="js/main.js"></script>
+    <script type="module">
+        import { renderHeader, renderFooter } from './js/components.js';
+        import { initHomePage, initNavigation, loadSiteConfig } from './js/main.js';
+        
+        document.getElementById('header-placeholder').innerHTML = await renderHeader();
+        document.getElementById('footer-placeholder').innerHTML = await renderFooter();
+        
+        // Load hero content from site.json
+        const siteConfig = await loadSiteConfig();
+        if (siteConfig && siteConfig.home) {
+            document.getElementById('heroH1').textContent = siteConfig.home.heroH1;
+            document.getElementById('heroSubline').textContent = siteConfig.home.heroSubline;
+            document.getElementById('heroCoreLine').textContent = siteConfig.home.heroCoreLine;
+            document.getElementById('heroSupporting').textContent = siteConfig.home.heroSupportingLine;
+        }
+        
+        initNavigation();
+        await initHomePage();
+    </script>
 </body>
 </html>

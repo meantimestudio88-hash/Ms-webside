@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Method — Meantime Studio</title>
+    <meta name="description" content="A structured approach that protects design intent and reduces ambiguity for homeowners.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>Method</h1>
+            <p class="page-intro">A structured approach that protects design intent and reduces ambiguity for homeowners.</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Understanding the Household</h2>
+                <div class="section-content">
+                    <p>We begin by understanding routines, storage patterns, privacy needs, and circulation. How do people move through the space? Where do they work, rest, gather? What needs to be stored, and where?</p>
+                    <p>These observations inform every spatial decision. The design is structured around real use, not idealized living.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Spatial Structuring</h2>
+                <div class="section-content">
+                    <p>Spatial organization comes before aesthetic layering. We test proportion, flow, and balance through drawings and models. The framework must work before finishes are selected.</p>
+                    <p>Every intervention is measured. Walls are removed or added only where they improve circulation or privacy. Storage is integrated, not added. The spatial structure supports the routines it will house.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Project Governance</h2>
+                <div class="section-content">
+                    <p>Clear stages, defined decisions, budget alignment. We establish a structured process that reduces ambiguity and keeps the project on track.</p>
+                    <p>Each phase has clear deliverables and decision points. Budgets are aligned with design intent from the start. Changes are documented and approved before execution.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Site Oversight</h2>
+                <div class="section-content">
+                    <p>Active coordination and direct reporting ensure design intent carries through to completion. We maintain regular site visits and direct communication with contractors.</p>
+                    <p>Details are checked against drawings. Materials are verified before installation. The build process is controlled, not left to chance.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Communication</h2>
+                <div class="section-content">
+                    <p>Structured updates, transparent timelines, decision checkpoints. Homeowners are informed at each stage, with clear documentation of progress and decisions.</p>
+                    <p>No surprises. No ambiguity. Every communication is clear, factual, and actionable.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script type="module">
+        import { renderHeader, renderFooter } from './js/components.js';
+        import { initNavigation } from './js/main.js';
+        
+        document.getElementById('header-placeholder').innerHTML = await renderHeader();
+        document.getElementById('footer-placeholder').innerHTML = await renderFooter();
+        initNavigation();
+    </script>
+</body>
+</html>

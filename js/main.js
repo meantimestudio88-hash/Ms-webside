@@ -1,253 +1,127 @@
-import { db } from './firebase-config.js';
-import { collection, getDocs, query, where, orderBy, limit } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+// Main application logic
 
-// Mobile menu toggle
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
+import { loadProjects, renderFeaturedProjects, getProjectBySlug, renderProjectDetail, renderProjectGrid, renderProjectIndex } from './render/projects.js';
+import { loadTestimonials, renderTestimonialsList } from './render/testimonials.js';
+import { loadPeople, renderPeopleGrid } from './render/people.js';
 
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
+// Load site configuration
+export async function loadSiteConfig() {
+    try {
+        const response = await fetch('data/site.json');
+        return await response.json();
+    } catch (error) {
+        console.error('Error loading site config:', error);
+        return null;
+    }
 }
 
-// Animate statistics on homepage
-function animateStats() {
-    const stats = document.querySelectorAll('.stat-number');
+// Initialize navigation
+export function initNavigation() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
     
-    stats.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        const duration = 2000;
-        const increment = target / (duration / 16);
-        let current = 0;
-        
-        const updateStat = () => {
-            current += increment;
-            if (current < target) {
-                stat.textContent = Math.floor(current);
-                requestAnimationFrame(updateStat);
-            } else {
-                stat.textContent = target;
-            }
-        };
-        
-        // Start animation when element is in viewport
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    updateStat();
-                    observer.unobserve(entry.target);
-                }
-            });
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
-        
-        observer.observe(stat);
+    }
+    
+    // Set active nav item based on current page
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+        if (currentPath.includes(link.getAttribute('href'))) {
+            link.classList.add('active');
+        }
     });
 }
 
-// Load featured projects on homepage
-async function loadFeaturedProjects() {
+// Initialize page-specific content
+export async function initHomePage() {
     const featuredContainer = document.getElementById('featuredProjects');
-    if (!featuredContainer) return;
-    
-    try {
-        const projectsRef = collection(db, 'projects');
-        const q = query(projectsRef, where('featured', '==', true), orderBy('date', 'desc'), limit(3));
-        const snapshot = await getDocs(q);
-        
-        if (snapshot.empty) {
-            featuredContainer.innerHTML = '<p class="loading">No featured projects yet.</p>';
-            return;
-        }
-        
-        featuredContainer.innerHTML = '';
-        snapshot.forEach(doc => {
-            const project = { id: doc.id, ...doc.data() };
-            const projectCard = createProjectCard(project);
-            featuredContainer.appendChild(projectCard);
-        });
-    } catch (error) {
-        console.error('Error loading featured projects:', error);
-        featuredContainer.innerHTML = '<p class="loading">Error loading projects.</p>';
+    if (featuredContainer) {
+        const projects = await loadProjects();
+        renderFeaturedProjects(projects, featuredContainer);
     }
 }
 
-// Create project card element
-function createProjectCard(project) {
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    card.innerHTML = `
-        <img src="${project.images && project.images[0] ? project.images[0] : 'https://via.placeholder.com/400'}" 
-             alt="${project.title}" class="project-image">
-        <div class="project-info">
-            <h3 class="project-title">${project.title}</h3>
-            <p class="project-category">${project.category || 'Interior Design'}</p>
-        </div>
-    `;
+export async function initWorkPage() {
+    const featuredContainer = document.getElementById('featuredProjects');
+    const allProjectsContainer = document.getElementById('allProjects');
     
-    card.addEventListener('click', () => {
-        window.location.href = `portfolio.html#${project.id}`;
-    });
+    const projects = await loadProjects();
     
-    return card;
-}
-
-// Load designers
-async function loadDesigners() {
-    const designersContainer = document.getElementById('designersGrid');
-    if (!designersContainer) return;
+    if (featuredContainer) {
+        const featured = projects.filter(p => p.isFeatured);
+        renderProjectGrid(featured, featuredContainer);
+    }
     
-    try {
-        const designersRef = collection(db, 'designers');
-        const snapshot = await getDocs(designersRef);
-        
-        if (snapshot.empty) {
-            designersContainer.innerHTML = '<p class="loading">No designers added yet.</p>';
-            return;
-        }
-        
-        designersContainer.innerHTML = '';
-        snapshot.forEach(doc => {
-            const designer = { id: doc.id, ...doc.data() };
-            const designerCard = createDesignerCard(designer);
-            designersContainer.appendChild(designerCard);
-        });
-    } catch (error) {
-        console.error('Error loading designers:', error);
-        designersContainer.innerHTML = '<p class="loading">Error loading designers.</p>';
+    if (allProjectsContainer) {
+        renderProjectIndex(projects, allProjectsContainer);
     }
 }
 
-// Create designer card element
-function createDesignerCard(designer) {
-    const card = document.createElement('div');
-    card.className = 'designer-card';
-    card.innerHTML = `
-        <div class="designer-image-wrapper">
-            <img src="${designer.image || 'https://via.placeholder.com/300'}" 
-                 alt="${designer.name}" class="designer-image">
-        </div>
-        <div class="designer-info">
-            <h3 class="designer-name">${designer.name}</h3>
-            <p class="designer-role">${designer.role || 'Interior Designer'}</p>
-            <p class="designer-bio">${designer.bio ? designer.bio.substring(0, 150) + '...' : ''}</p>
-            <button class="btn-view-more" data-designer-id="${designer.id}">View Profile</button>
-        </div>
-    `;
+export async function initProjectDetailPage() {
+    const path = window.location.pathname;
+    const isInWorkFolder = path.includes('/work/');
+    const basePath = isInWorkFolder ? '../' : '';
+    const slug = path.split('/').pop().replace('.html', '');
+    const container = document.getElementById('projectDetail');
     
-    const viewMoreBtn = card.querySelector('.btn-view-more');
-    viewMoreBtn.addEventListener('click', () => {
-        showDesignerModal(designer);
-    });
-    
-    return card;
-}
-
-// Show designer modal
-function showDesignerModal(designer) {
-    const modal = document.getElementById('designerModal');
-    const modalBody = document.getElementById('designerModalBody');
-    
-    if (!modal || !modalBody) return;
-    
-    modalBody.innerHTML = `
-        <div class="designer-modal-content">
-            <img src="${designer.image || 'https://via.placeholder.com/400'}" 
-                 alt="${designer.name}" class="designer-modal-image">
-            <div class="designer-modal-info">
-                <h2>${designer.name}</h2>
-                <p class="designer-modal-role">${designer.role || 'Interior Designer'}</p>
-                <p class="designer-modal-bio">${designer.bio || ''}</p>
-                ${designer.specialties && designer.specialties.length > 0 ? `
-                    <div class="designer-specialties">
-                        <h4>Specialties</h4>
-                        <div class="specialties-tags">
-                            ${designer.specialties.map(spec => `<span class="specialty-tag">${spec}</span>`).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-                ${designer.experience ? `<p class="designer-experience">Experience: ${designer.experience} years</p>` : ''}
-            </div>
-        </div>
-    `;
-    
-    modal.style.display = 'block';
-}
-
-// Load reviews
-async function loadReviews() {
-    const reviewsContainer = document.getElementById('reviewsGrid');
-    if (!reviewsContainer) return;
-    
-    try {
-        const reviewsRef = collection(db, 'reviews');
-        const q = query(reviewsRef, where('approved', '==', true), orderBy('date', 'desc'));
-        const snapshot = await getDocs(q);
-        
-        if (snapshot.empty) {
-            reviewsContainer.innerHTML = '<p class="loading">No reviews yet.</p>';
-            return;
-        }
-        
-        reviewsContainer.innerHTML = '';
-        snapshot.forEach(doc => {
-            const review = { id: doc.id, ...doc.data() };
-            const reviewCard = createReviewCard(review);
-            reviewsContainer.appendChild(reviewCard);
-        });
-    } catch (error) {
-        console.error('Error loading reviews:', error);
-        reviewsContainer.innerHTML = '<p class="loading">Error loading reviews.</p>';
-    }
-}
-
-// Create review card element
-function createReviewCard(review) {
-    const card = document.createElement('div');
-    card.className = 'review-card';
-    
-    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
-    const date = review.date ? new Date(review.date.seconds * 1000).toLocaleDateString() : '';
-    
-    card.innerHTML = `
-        <div class="review-header">
-            <div class="review-client">
-                <h4>${review.clientName}</h4>
-                ${review.project ? `<p class="review-project">${review.project}</p>` : ''}
-            </div>
-            <div class="review-rating">${stars}</div>
-        </div>
-        <p class="review-comment">"${review.comment}"</p>
-        ${date ? `<p class="review-date">${date}</p>` : ''}
-    `;
-    
-    return card;
-}
-
-// Close modal
-document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('close-modal') || e.target.classList.contains('modal')) {
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(modal => {
-            if (modal === e.target || e.target.classList.contains('close-modal')) {
-                modal.style.display = 'none';
+    if (container) {
+        const project = await getProjectBySlug(slug, basePath);
+        if (project) {
+            container.innerHTML = renderProjectDetail(project, basePath);
+            
+            // Load related projects
+            const relatedContainer = document.getElementById('relatedProjects');
+            if (relatedContainer) {
+                const projects = await loadProjects(basePath);
+                const related = projects
+                    .filter(p => p.slug !== slug)
+                    .slice(0, 2);
+                renderProjectGrid(related, relatedContainer, basePath);
             }
-        });
+        } else {
+            container.innerHTML = '<p>Project not found.</p>';
+        }
     }
-});
+}
+
+export async function initStudioPage() {
+    const peopleContainer = document.getElementById('peopleGrid');
+    const testimonialsContainer = document.getElementById('testimonialsList');
+    
+    if (peopleContainer) {
+        const people = await loadPeople();
+        renderPeopleGrid(people, peopleContainer);
+    }
+    
+    if (testimonialsContainer) {
+        const testimonials = await loadTestimonials();
+        renderTestimonialsList(testimonials, testimonialsContainer);
+    }
+}
+
+export async function initMethodPage() {
+    // Method page is mostly static content
+}
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-    animateStats();
-    loadFeaturedProjects();
+document.addEventListener('DOMContentLoaded', async () => {
+    initNavigation();
     
-    // Load designers if on designers page
-    if (document.getElementById('designersGrid')) {
-        loadDesigners();
-    }
+    const path = window.location.pathname;
     
-    // Load reviews if on reviews page
-    if (document.getElementById('reviewsGrid')) {
-        loadReviews();
+    if (path === '/' || path.includes('index.html')) {
+        await initHomePage();
+    } else if (path.includes('work.html')) {
+        await initWorkPage();
+    } else if (path.includes('work/')) {
+        await initProjectDetailPage();
+    } else if (path.includes('studio.html')) {
+        await initStudioPage();
+    } else if (path.includes('method.html')) {
+        await initMethodPage();
     }
 });

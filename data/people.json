@@ -1,0 +1,28 @@
+{
+  "people": [
+    {
+      "name": "Sarah Chen",
+      "role": "Founder & Creative Director",
+      "photo": "assets/img/team/sarah-chen.jpg",
+      "bioShort": "Sarah founded Meantime Studio to focus on residential design that supports how people actually live. Her work emphasizes spatial structure and controlled execution.",
+      "isPublished": true,
+      "sortOrder": 1
+    },
+    {
+      "name": "Marcus Tan",
+      "role": "Senior Designer",
+      "photo": "assets/img/team/marcus-tan.jpg",
+      "bioShort": "Marcus specializes in spatial planning and project coordination. He brings a structured approach to residential design and site oversight.",
+      "isPublished": true,
+      "sortOrder": 2
+    },
+    {
+      "name": "Elena Wong",
+      "role": "Designer",
+      "photo": "assets/img/team/elena-wong.jpg",
+      "bioShort": "Elena focuses on residential projects, with particular attention to storage solutions and material selection that support long-term use.",
+      "isPublished": true,
+      "sortOrder": 3
+    }
+  ]
+}

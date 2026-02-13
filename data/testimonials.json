@@ -1,0 +1,46 @@
+{
+  "testimonials": [
+    {
+      "quote": "Working with Meantime Studio transformed our home. The attention to how we actually live, not how homes are staged, made all the difference. The process was structured and clear throughout.",
+      "nameOrInitials": "S. & M. Chen",
+      "projectSlug": "residence-01",
+      "isPublished": true,
+      "sortOrder": 1
+    },
+    {
+      "quote": "The design feels effortless, but we know how much coordination went into making it happen. Every decision was discussed, every detail checked. The result is a home that works perfectly for our routines.",
+      "nameOrInitials": "L. Tan",
+      "projectSlug": "residence-02",
+      "isPublished": true,
+      "sortOrder": 2
+    },
+    {
+      "quote": "Meantime Studio listened carefully to how we live and work, then translated that into a space that feels both spacious and intimate. The structured approach kept the project on track and on budget.",
+      "nameOrInitials": "A. & R. Lim",
+      "projectSlug": null,
+      "isPublished": true,
+      "sortOrder": 3
+    },
+    {
+      "quote": "We appreciated the clarity and oversight throughout the project. The design decisions were always explained, and the coordination was disciplined. The result is a home that feels completely tailored to us.",
+      "nameOrInitials": "J. Wong",
+      "projectSlug": "residence-03",
+      "isPublished": true,
+      "sortOrder": 4
+    },
+    {
+      "quote": "The studio's approach to space and structure transformed our apartment. It's not just beautiful—it works perfectly for how we live. The project governance kept everything clear and accountable.",
+      "nameOrInitials": "K. & P. Singh",
+      "projectSlug": null,
+      "isPublished": true,
+      "sortOrder": 5
+    },
+    {
+      "quote": "Meantime Studio created a space that feels both contemporary and timeless. The attention to detail, from spatial planning to site coordination, shows in every corner.",
+      "nameOrInitials": "M. Lee",
+      "projectSlug": null,
+      "isPublished": true,
+      "sortOrder": 6
+    }
+  ]
+}

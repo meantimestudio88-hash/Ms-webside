@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio — Meantime Studio</title>
+    <meta name="description" content="Meantime Studio is an interior design practice in Singapore, focused on residential design.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>Studio</h1>
+        </div>
+    </div>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Our Perspective</h2>
+                <div class="section-content">
+                    <p>Good homes are structured around how people actually live — not how they are staged.</p>
+                    <p>In Singapore, residential space is measured and often compressed. Homes rise vertically, light shifts quickly, and daily life moves at pace. Within this context, we design for the routines, storage needs, and privacy requirements that define real living.</p>
+                    <p>Our work favors calm decisions and long-term use. Every material, every junction, every spatial choice is measured against how it will be lived with over time.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Residential Focus</h2>
+                <div class="section-content">
+                    <p>We work exclusively on residential projects—condos and landed homes in Singapore. Our focus is on family routines, practical refinement, and spatial organization that supports how people actually use their homes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Structured Delivery</h2>
+                <div class="section-content">
+                    <p>Design intent is reinforced through disciplined coordination and oversight. We maintain clarity and accountability from concept through to completion, ensuring every decision aligns with the original vision.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">People</h2>
+                <div class="people-grid" id="peopleGrid">
+                    <!-- People loaded via JS -->
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-heading">Words</h2>
+                <div class="testimonials-list" id="testimonialsList">
+                    <!-- Testimonials loaded via JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script type="module">
+        import { renderHeader, renderFooter } from './js/components.js';
+        import { initNavigation, initStudioPage } from './js/main.js';
+        
+        document.getElementById('header-placeholder').innerHTML = await renderHeader();
+        document.getElementById('footer-placeholder').innerHTML = await renderFooter();
+        initNavigation();
+        await initStudioPage();
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+{
+  "projects": [
+    {
+      "slug": "residence-01",
+      "title": "Outram Residence",
+      "location": "Outram, Singapore",
+      "year": "2024",
+      "type": "Residential",
+      "coverImage": "assets/img/projects/residence-01-cover.jpg",
+      "galleryImages": [
+        "assets/img/projects/residence-01-01.jpg",
+        "assets/img/projects/residence-01-02.jpg",
+        "assets/img/projects/residence-01-03.jpg",
+        "assets/img/projects/residence-01-04.jpg",
+        "assets/img/projects/residence-01-05.jpg",
+        "assets/img/projects/residence-01-06.jpg"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "sortOrder": 1,
+      "introLifestyle": "A quiet renovation of a 1980s apartment, reorganized around morning routines and evening privacy. The design opens the living area to morning light while creating clear separation between shared and private spaces.",
+      "livingFramework": "The spatial organization prioritizes circulation and storage. A new kitchen island anchors the open plan, while integrated joinery replaces freestanding furniture. Each intervention is measured against how the space is actually used.",
+      "deliveryNote": "Structured coordination ensured design intent carried through to completion. Regular site visits and direct communication with contractors maintained clarity throughout the build."
+    },
+    {
+      "slug": "residence-02",
+      "title": "River Valley Apartment",
+      "location": "River Valley, Singapore",
+      "year": "2024",
+      "type": "Residential",
+      "coverImage": "assets/img/projects/residence-02-cover.jpg",
+      "galleryImages": [
+        "assets/img/projects/residence-02-01.jpg",
+        "assets/img/projects/residence-02-02.jpg",
+        "assets/img/projects/residence-02-03.jpg",
+        "assets/img/projects/residence-02-04.jpg",
+        "assets/img/projects/residence-02-05.jpg",
+        "assets/img/projects/residence-02-06.jpg",
+        "assets/img/projects/residence-02-07.jpg",
+        "assets/img/projects/residence-02-08.jpg"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "sortOrder": 2,
+      "introLifestyle": "A three-bedroom apartment redesigned to support a family's daily patterns. The new layout creates distinct zones for work, rest, and gathering while maintaining visual connection throughout.",
+      "livingFramework": "Spatial proportion and flow were tested before material selection. The design removes unnecessary walls while preserving privacy where needed. A long storage wall provides both function and visual rhythm.",
+      "deliveryNote": "Active site oversight and structured decision-making kept the project on track. Weekly coordination meetings ensured alignment between design intent and execution."
+    },
+    {
+      "slug": "residence-03",
+      "title": "Tiong Bahru Apartment",
+      "location": "Tiong Bahru, Singapore",
+      "year": "2023",
+      "type": "Residential",
+      "coverImage": "assets/img/projects/residence-03-cover.jpg",
+      "galleryImages": [
+        "assets/img/projects/residence-03-01.jpg",
+        "assets/img/projects/residence-03-02.jpg",
+        "assets/img/projects/residence-03-03.jpg",
+        "assets/img/projects/residence-03-04.jpg",
+        "assets/img/projects/residence-03-05.jpg"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "sortOrder": 3,
+      "introLifestyle": "A compact two-bedroom apartment optimized for a couple working from home. The design creates flexible spaces that adapt to different activities throughout the day.",
+      "livingFramework": "The spatial structure balances open areas with defined zones. A custom desk unit integrates into the living space, while the bedroom remains a quiet retreat. Storage is built-in rather than added.",
+      "deliveryNote": "Clear project governance and regular site visits maintained design quality. Direct coordination with trades ensured details were executed as specified."
+    },
+    {
+      "slug": "residence-04",
+      "title": "Bukit Timah House",
+      "location": "Bukit Timah, Singapore",
+      "year": "2023",
+      "type": "Residential",
+      "coverImage": "assets/img/projects/residence-04-cover.jpg",
+      "galleryImages": [
+        "assets/img/projects/residence-04-01.jpg",
+        "assets/img/projects/residence-04-02.jpg",
+        "assets/img/projects/residence-04-03.jpg",
+        "assets/img/projects/residence-04-04.jpg"
+      ],
+      "isFeatured": false,
+      "isPublished": true,
+      "sortOrder": 4,
+      "introLifestyle": "A landed home renovation focused on improving natural light and circulation. The design opens interior spaces while maintaining privacy from the street.",
+      "livingFramework": "Spatial organization prioritizes flow between indoor and outdoor areas. The layout creates clear zones for different activities while preserving the home's original character.",
+      "deliveryNote": "Structured oversight and clear communication ensured the renovation proceeded smoothly. Regular site coordination maintained alignment with design intent."
+    }
+  ]
+}
